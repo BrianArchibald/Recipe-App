@@ -15,12 +15,14 @@ $(document).ready(function(){
  //     });
 
 		//$("#btnFilter").submit(function() {
+			// var val = $("#filter").val();
 
-
-		var val = $("#filter").val();
+		var initialVal = $("#filter").val();
+		let val = initialVal.replace(/\s/g, /%20/g);
 		// let re = /\s*,\s*/;
 		// var initialVal = $("#filter").val();
 		// var val = initialVal.split(re);
+		
 		
 
 
@@ -111,19 +113,14 @@ function filterlist(param,option){
 			    		html ='';
 			    		filteredlist.map((recipe, index) => {			    		
 				    	html += `<li id=${index} class="col-lg-4 col-md-4 col-xs-12">
-
 				    			<a class="recipe-link" href="recipe.source_url">
-
 								<img src=${recipe.image_url} class="recipe-img" />
-								<span class="recipe-title">
-								
+								<span class="recipe-title">	
 								<p><b>Title:</b> ${recipe.title}</p>
 								<p><b>Publisher:</b> ${recipe.publisher}</p>
 								<p><b>Social Rank:</b> ${recipe.social_rank}</p>
 								</span>
-
 								</a>
-
 								</li>`;
 
 						});
