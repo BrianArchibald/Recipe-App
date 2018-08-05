@@ -5,12 +5,22 @@ $(document).ready(function(){
 	loadlist();
 	//paginator(3);
 
-	$("#btnFilter").click(function(e) {
-		//var val = $("#filter").val();
+	$("#btnFilter").click(function(e) {	
 
-		let re = /\s*,\s*/;
-		var initialVal = $("#filter").val();
-		var val = initialVal.split(re);
+
+	// $(document).bind('keypress', function(e) {
+ //            if(e.keyCode==13){
+ //                 $('#btnFilter').trigger('click');
+ //             }
+ //     });
+
+		//$("#btnFilter").submit(function() {
+
+
+		var val = $("#filter").val();
+		// let re = /\s*,\s*/;
+		// var initialVal = $("#filter").val();
+		// var val = initialVal.split(re);
 		
 
 
@@ -19,13 +29,15 @@ $(document).ready(function(){
 
 
 	 	filterlist(val,option);
-
+	 	// for(let i = 0; i < val.length; i++) {
+	 	// 	filterlist
+	 	// }
 
 	 	event.stopPropagation();
 		console.log(val);
 
 	});
-	
+ 	
 });
 
 
@@ -37,14 +49,15 @@ function loadlist(){
 		success:function(data){			
 			if(data != undefined){
 				data.recipes.map((recipe, index) => {
-					html += `<li id=${index} class="col-lg-4 col-md-4 col-xs-12">	    			  
+					html += `<li id=${index} class="col-lg-4 col-md-4 col-xs-12">	
+							 <a class="recipe-link" href="recipe.source_url">    			  
 							  <img src=${recipe.image_url} class="recipe-img" />
 							  <span class="recipe-title">
-							   <p><b>ID:</b> ${recipe.recipe_id}</p>
 							   <p><b>Title:</b> ${recipe.title}</p>
 							   <p><b>Publisher:</b> ${recipe.publisher}</p>
 							   <p><b>Social Rank:</b> ${recipe.social_rank}</p>
 							  </span>
+							  </a>
 							 </li>`;
 
 				});
@@ -97,14 +110,20 @@ function filterlist(param,option){
 			    	if(filteredlist.length > 0){
 			    		html ='';
 			    		filteredlist.map((recipe, index) => {			    		
-				    	html += `<li id=${index} class="col-lg-4 col-md-4 col-xs-12">	    			  
+				    	html += `<li id=${index} class="col-lg-4 col-md-4 col-xs-12">
+
+				    			<a class="recipe-link" href="recipe.source_url">
+
 								<img src=${recipe.image_url} class="recipe-img" />
 								<span class="recipe-title">
-								<p><b>ID:</b> ${recipe.recipe_id}</p>
+								
 								<p><b>Title:</b> ${recipe.title}</p>
 								<p><b>Publisher:</b> ${recipe.publisher}</p>
 								<p><b>Social Rank:</b> ${recipe.social_rank}</p>
 								</span>
+
+								</a>
+
 								</li>`;
 
 						});

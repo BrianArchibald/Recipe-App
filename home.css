@@ -11,6 +11,10 @@ ul, ul li{
 	list-style-type: none;
 }
 
+a:link {
+	text-decoration: none;
+}
+
 li{
 	display: inline-block;
 }
