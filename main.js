@@ -5,6 +5,10 @@ $(document).ready(function(){
 	loadlist();
 	//paginator(3);
 
+	$(".recipe-link").click(function() {
+		$(this)
+	});
+
 	$("#filter").keypress(function(e) {
         if(e.keyCode==13){
              $('#btnFilter').trigger('click');
