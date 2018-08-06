@@ -1,18 +1,18 @@
-const urldata = "recipe.json";
+const urldata = "recipe.json"; //"http://food2fork.com/api/search?key=6adb1e8b4d4c0af1c1fd8c928b910d67";
 
 $(document).ready(function(){
 
 	loadlist();
 	//paginator(3);
 
+	$("#filter").keypress(function(e) {
+        if(e.keyCode==13){
+             $('#btnFilter').trigger('click');
+         }
+
+	});
+
 	$("#btnFilter").click(function(e) {	
-
-
-	// $(document).bind('keypress', function(e) {
- //            if(e.keyCode==13){
- //                 $('#btnFilter').trigger('click');
- //             }
- //     });
 
 		//$("#btnFilter").submit(function() {
 			// var val = $("#filter").val();
@@ -48,6 +48,8 @@ function loadlist(){
 	$.ajax({
 		url:urldata,
 		async: false,
+		// type: "POST",
+		// dataType: "jsonp",
 		success:function(data){			
 			if(data != undefined){
 				data.recipes.map((recipe, index) => {
