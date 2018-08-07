@@ -1,4 +1,5 @@
 const urldata = "recipe.json"; //"http://food2fork.com/api/search?key=6adb1e8b4d4c0af1c1fd8c928b910d67";
+const APIKey = "6adb1e8b4d4c0af1c1fd8c928b910d67";
 
 $(document).ready(function(){
 
@@ -6,8 +7,21 @@ $(document).ready(function(){
 	//paginator(3);
 
 	$(".recipe-link").click(function() {
-		$(this)
+		var html = '';
+		html += `<li id=${this.index} class="col-lg-4 col-md-4 col-xs-12">	  			  
+					  <img src=${this.recipe.image_url} class="recipe-img" />
+					  <span class="recipe-title">
+					  <p><b>Title:</b> ${this.recipe.title}</p>
+					  <p><b>Publisher:</b> ${this.recipe.publisher}</p>
+					  <p><b>Social Rank:</b> ${this.recipe.social_rank}</p>
+					  <a class="recipe-link" href="${this.recipe.source_url}"> 
+					  <p><b>Recipe Website:</b> "Click Here"</p>
+					  </span>
+					  </a>
+				</li>`;
 	});
+
+
 
 	$("#filter").keypress(function(e) {
         if(e.keyCode==13){
@@ -49,21 +63,40 @@ $(document).ready(function(){
 
 function loadlist(){
 	var html = '';
+
+		// const data = new FormData();
+		// form.append("key", "6adb1e8b4d4c0af1c1fd8c928b910d67");
+		// form.append("q", "potato");
+
+
+	//$.ajax({
+		// url: urldata;
+		// type: "POST",
+		// method: "POST",
+		// dataType: "json",
+		// contentType: false,
+		// processData: false,
+		// data: data,
+		
+	//}
+
+
+
+
 	$.ajax({
 		url:urldata,
 		async: false,
-		// type: "POST",
-		// dataType: "jsonp",
+		
 		success:function(data){			
 			if(data != undefined){
 				data.recipes.map((recipe, index) => {
 					html += `<li id=${index} class="col-lg-4 col-md-4 col-xs-12">	
-							 <a class="recipe-link" href="recipe.source_url">    			  
+							  <a class="recipe-link" href="recipe.f2f_url">    			  
 							  <img src=${recipe.image_url} class="recipe-img" />
 							  <span class="recipe-title">
-							   <p><b>Title:</b> ${recipe.title}</p>
-							   <p><b>Publisher:</b> ${recipe.publisher}</p>
-							   <p><b>Social Rank:</b> ${recipe.social_rank}</p>
+							  <p><b>Title:</b> ${recipe.title}</p>
+							  <p><b>Publisher:</b> ${recipe.publisher}</p>
+							  <p><b>Social Rank:</b> ${recipe.social_rank}</p>
 							  </span>
 							  </a>
 							 </li>`;
