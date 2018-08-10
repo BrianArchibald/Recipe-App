@@ -1,5 +1,5 @@
-const urldata = "recipe.json"; //"http://food2fork.com/api/search?key=6adb1e8b4d4c0af1c1fd8c928b910d67";
-const APIKey = "6adb1e8b4d4c0af1c1fd8c928b910d67";
+//const urldata = "http://food2fork.com/api/search?key=6adb1e8b4d4c0af1c1fd8c928b910d67";
+//const APIKey = "6adb1e8b4d4c0af1c1fd8c928b910d67";
 
 $(document).ready(function(){
 
@@ -64,34 +64,29 @@ $(document).ready(function(){
 function loadlist(){
 	var html = '';
 
-		// const data = new FormData();
-		// form.append("key", "6adb1e8b4d4c0af1c1fd8c928b910d67");
-		// form.append("q", "potato");
-
-
-	//$.ajax({
-		// url: urldata;
-		// type: "POST",
-		// method: "POST",
-		// dataType: "json",
-		// contentType: false,
-		// processData: false,
-		// data: data,
-		
-	//}
-
-
+		const data = new FormData();
+		data.append("key", "6adb1e8b4d4c0af1c1fd8c928b910d67");
+		data.append("q", "potato");
 
 
 	$.ajax({
-		url:urldata,
-		async: false,
+		url: urldata,
+		type: "POST",
+		method: "POST",
+		dataType: "jsonp",
+		contentType: false,
+		processData: false,
+		data: data,
+	
+	// $.ajax({
+	// 	url:urldata,
+	// 	async: false,
 		
 		success:function(data){			
 			if(data != undefined){
 				data.recipes.map((recipe, index) => {
 					html += `<li id=${index} class="col-lg-4 col-md-4 col-xs-12">	
-							  <a class="recipe-link" href="recipe.f2f_url">    			  
+							  <a class="recipe-link" href="${recipe.f2f_url}">    			  
 							  <img src=${recipe.image_url} class="recipe-img" />
 							  <span class="recipe-title">
 							  <p><b>Title:</b> ${recipe.title}</p>
