@@ -1,5 +1,7 @@
-//const urldata = "http://food2fork.com/api/search?key=6adb1e8b4d4c0af1c1fd8c928b910d67";
-//const APIKey = "6adb1e8b4d4c0af1c1fd8c928b910d67";
+const urldata = "recipe.json"
+
+const urldata = "http://food2fork.com/api/search?key=6adb1e8b4d4c0af1c1fd8c928b910d67";
+const APIKey = "6adb1e8b4d4c0af1c1fd8c928b910d67";
 
 $(document).ready(function(){
 
